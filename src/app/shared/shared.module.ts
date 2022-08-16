@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
+import { PrimengModule } from '../primeng/primeng.module';
 
 
 
@@ -10,6 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
   ],
   imports: [
     CommonModule,
+    PrimengModule,
   ],
   exports: [
     NavbarComponent,
