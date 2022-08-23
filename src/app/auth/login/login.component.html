@@ -1,0 +1,54 @@
+<div class="h-screen">
+    <div class="card mt-8 surface-card p-8">
+        <h2>Login Form</h2>
+        <form [formGroup]="loginForm" autocomplete="off">
+            <div class="field">
+                <label for="userName" class="block">Username</label>
+                <input id="userName" type="username" aria-describedby="userName-help" class="p-inputtext-lg" pInputText formControlName="userName"/>
+                <small id="userName-help" class="p-error block">Username is not available.</small>
+            </div>
+            <div class="field">
+                <label for="password" class="block">Username</label>
+                <input id="password" type="password" aria-describedby="password-help" class="p-inputtext-lg" pInputText formControlName="password"/>
+                <small id="password-help" class="p-error block">Username is not available.</small>
+            </div>
+            <div class="flex justify-content-end mt-4">
+                <p-button label="Login" icon="pi pi-check" iconPos="right"></p-button>
+            </div>
+        </form>
+        <a routerLink="/auth/register" class="flex justify-content-center mt-5">Forgot your password?</a>
+        <a routerLink="/auth/register" class="flex justify-content-center mt-3">Don't have an account?</a>
+    </div>
+</div>
+
+
+
+<!-- <div class="grid">    
+        <div class="col-6">
+            <div class="card">
+                <form [formGroup]="loginForm" autocomplete="off">
+                    <div class="field">
+                        <label for="userName" class="block">Username</label>
+                        <input id="userName" type="username" aria-describedby="userName-help" class="ng-invalid ng-dirty p-inputtext-lg" pInputText formControlName="userName"/>
+                        <small id="userName-help" class="p-error block">Username is not available.</small>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-6">
+            <div>
+                <span>Valid</span>
+                <pre>{{loginForm.valid}}</pre>
+                
+                <span>Pristine</span>
+                <pre>{{loginForm.pristine}}</pre>
+                
+                <span>Touched</span>
+                <pre>{{loginForm.touched}}</pre>
+                
+                <span>Values</span>
+                <pre>{{loginForm.value | json}}</pre>
+            </div>
+        </div>
+    
+</div> -->

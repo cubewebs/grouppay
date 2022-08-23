@@ -1,0 +1,51 @@
+<div class="h-screen">
+    <div class="card mt-5 surface-card p-8">
+        <h2>Registration Form</h2>
+        <form [formGroup]="registerForm" (ngSubmit)="createUser()" autocomplete="off">
+            <div class="formgrid grid">
+                <div class="field col">
+                    <label for="firstName" class="block">First Name</label>
+                    <input id="firstName" type="text" aria-describedby="firstName-help" class="p-inputtext-lg" pInputText formControlName="firstName"/>
+                    <small *ngIf="fieldNotValid('firstName')" id="firstName-help" class="p-error block">Required, min 3 characters.</small>
+                </div>
+                <div class="field col">
+                    <label for="lastName" class="block">Last Name</label>
+                    <input id="lastName" type="text" aria-describedby="lastName-help" class="p-inputtext-lg" pInputText formControlName="lastName"/>
+                    <small *ngIf="fieldNotValid('lastName')" id="lastName-help" class="p-error block">Required, min 3 characters.</small>
+                </div>
+            </div>
+            <div class="formgrid grid">
+                <div class="field col">
+                    <label for="username" class="block">Username</label>
+                    <input id="username" type="username" aria-describedby="username-help" class="p-inputtext-lg" pInputText formControlName="username"/>
+                    <small  *ngIf="fieldNotValid('username')"id="username-help" class="p-error block">Required, min 3 characters.</small>
+                </div>
+                <div class="field col">
+                    <label for="email" class="block">Email</label>
+                    <input id="email" type="email" aria-describedby="email-help" class="p-inputtext-lg" pInputText formControlName="email"/>
+                    <small *ngIf="fieldNotValid('email')" id="email-help" class="p-error block">Required to be valid</small>
+                </div>
+            </div>
+            <div class="formgrid grid">
+                <div class="field col">
+                    <label for="password" class="block">Password</label>
+                    <input id="password" type="password" aria-describedby="password-help" class="p-inputtext-lg" pInputText formControlName="password"/>
+                    <small *ngIf="fieldNotValid('password')" id="password-help" class="p-error block">Required, min 6 characters.</small>
+                </div>
+                <div class="field col">
+                    <label for="password2" class="block">Confirm Password</label>
+                    <input id="password2" type="password" aria-describedby="password2-help" class="p-inputtext-lg" pInputText formControlName="password2"/>
+                    <small *ngIf="passwordsNotValid()" id="password2-help" class="p-error block">Your passwords are not the same.</small>
+                </div>
+            </div>
+            <div class="grid col-10">
+                <input type="checkbox" formControlName="terms" id="terms-check">&nbsp; I agree to all terms of use and privacy policy.
+                <small *ngIf="aceptTerms()" id="terms-check-help" class="p-error block">Must be accepted.</small>
+            </div>
+            <div class="flex justify-content-end mt-4">
+                <p-button label="Register" icon="pi pi-check" iconPos="right" type="submit"></p-button>
+            </div>
+        </form>
+        <a routerLink="/auth/login" class="flex justify-content-center mt-5">Have an account? Login</a>
+    </div>
+</div>

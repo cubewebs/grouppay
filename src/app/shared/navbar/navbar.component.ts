@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-navbar',
@@ -8,138 +9,63 @@ import { MenuItem } from 'primeng/api';
 })
 export class NavbarComponent implements OnInit {
 
-  items!: MenuItem[];
+  MenuItems!: MenuItem[];
+  avatar: string = 'scr/assets/img/avatar.jpg'
 
-  constructor() { }
+  constructor(private primeConfig: PrimeNGConfig) { }
 
   ngOnInit(): void {
 
-    this.items = [
-      {
-          label:'File',
-          icon:'pi pi-fw pi-file',
-          items:[
-              {
-                  label:'New',
-                  icon:'pi pi-fw pi-plus',
-                  items:[
-                  {
-                      label:'Bookmark',
-                      icon:'pi pi-fw pi-bookmark'
-                  },
-                  {
-                      label:'Video',
-                      icon:'pi pi-fw pi-video'
-                  },
+    this.primeConfig.ripple = true;
 
-                  ]
-              },
-              {
-                  label:'Delete',
-                  icon:'pi pi-fw pi-trash'
-              },
-              {
-                  separator:true
-              },
-              {
-                  label:'Export',
-                  icon:'pi pi-fw pi-external-link'
-              }
-          ]
+    this.MenuItems = [
+      {
+          label:'Home',
+          icon:'pi pi-fw pi-home',
+          routerLink: '/'
       },
       {
-          label:'Edit',
-          icon:'pi pi-fw pi-pencil',
-          items:[
-              {
-                  label:'Left',
-                  icon:'pi pi-fw pi-align-left'
-              },
-              {
-                  label:'Right',
-                  icon:'pi pi-fw pi-align-right'
-              },
-              {
-                  label:'Center',
-                  icon:'pi pi-fw pi-align-center'
-              },
-              {
-                  label:'Justify',
-                  icon:'pi pi-fw pi-align-justify'
-              },
-
-          ]
+          label:'Network',
+          icon:'pi pi-fw pi-th-large',
+          routerLink: 'network'
       },
       {
-          label:'Users',
+          label:'My Groups',
+          icon:'pi pi-fw pi-table',
+          routerLink: 'my-groups'
+      },
+      {
+          separator: true
+      },
+      {
+          label:'User',
           icon:'pi pi-fw pi-user',
           items:[
               {
-                  label:'New',
+                  label:'Profile',
                   icon:'pi pi-fw pi-user-plus',
-
               },
               {
-                  label:'Delete',
+                  label:'My Groups',
                   icon:'pi pi-fw pi-user-minus',
-
+                  routerLink: 'my-groups'
               },
               {
-                  label:'Search',
-                  icon:'pi pi-fw pi-users',
-                  items:[
-                  {
-                      label:'Filter',
-                      icon:'pi pi-fw pi-filter',
-                      items:[
-                          {
-                              label:'Print',
-                              icon:'pi pi-fw pi-print'
-                          }
-                      ]
-                  },
-                  {
-                      icon:'pi pi-fw pi-bars',
-                      label:'List'
-                  }
-                  ]
-              }
-          ]
-      },
-      {
-          label:'Events',
-          icon:'pi pi-fw pi-calendar',
-          items:[
-              {
-                  label:'Edit',
-                  icon:'pi pi-fw pi-pencil',
-                  items:[
-                  {
-                      label:'Save',
-                      icon:'pi pi-fw pi-calendar-plus'
-                  },
-                  {
-                      label:'Delete',
-                      icon:'pi pi-fw pi-calendar-minus'
-                  },
-
-                  ]
+                  label: 'Login',
+                  icon:  'pi pi-fw pi-sign-in',
+                  routerLink: 'auth/login'
               },
               {
-                  label:'Archieve',
-                  icon:'pi pi-fw pi-calendar-times',
-                  items:[
-                  {
-                      label:'Remove',
-                      icon:'pi pi-fw pi-calendar-minus'
-                  }
-                  ]
+                  label: 'Register',
+                  icon: 'pi pi-fw pi-user-plus',
+                  routerLink: 'auth/register'
+              },
+              {
+                  label:'Logout',
+                  icon:'pi pi-fw pi-sign-out',
+                  routerLink: 'auth/logout'
               }
           ]
-      },
-      {
-          label:'Quit',
-          icon:'pi pi-fw pi-power-off'
       }
   ];
 
