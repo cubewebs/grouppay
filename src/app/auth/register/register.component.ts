@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
+import {MessageService} from 'primeng/api';
+
+import { UserService } from 'src/app/services/user.service';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -22,22 +26,29 @@ export class RegisterComponent implements OnInit {
     validators: this.passwordsIquals('password', 'password2')
   } )
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private userService: UserService,
+              private ms: MessageService) { }
 
   ngOnInit(): void {
   }
 
   createUser() {
     this.formSubmitted = true;
-    console.log(this.registerForm.value)
 
-    if( this.registerForm.valid) {
-      console.log('Form Submitted')
+    if( this.registerForm.invalid) { return; }
+
+    // if valid then create the user
+    this.userService.createUser( this.registerForm.value ).subscribe( (res) => {
       
-    } else {
-      console.log('The form is not correct...')
-      
-    }
+        console.log('User Created ok')
+        console.log(res)
+        
+        
+      }, (err) => {
+        console.warn(err.error.msg)
+        this.ms.add({severity:'error', summary:'Error', detail: 'The email is already in use'})
+      })
     
   }
 

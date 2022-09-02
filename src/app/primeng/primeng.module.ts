@@ -5,6 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import {RippleModule} from 'primeng/ripple';
 import {AvatarModule} from 'primeng/avatar';
+import {ToastModule} from 'primeng/toast';
 
 
 
@@ -17,6 +18,7 @@ import {AvatarModule} from 'primeng/avatar';
     CardModule,
     RippleModule,
     AvatarModule,
+    ToastModule,
   ]
 })
 export class PrimengModule { }
