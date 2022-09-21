@@ -1,19 +1,23 @@
 <div class="h-screen">
     <div class="card mt-8 surface-card p-8">
         <h2>Login Form</h2>
-        <form [formGroup]="loginForm" autocomplete="off">
+        <form [formGroup]="loginForm" autocomplete="off" (ngSubmit)="login()">
             <div class="field">
-                <label for="userName" class="block">Username</label>
-                <input id="userName" type="username" aria-describedby="userName-help" class="p-inputtext-lg" pInputText formControlName="userName"/>
-                <small id="userName-help" class="p-error block">Username is not available.</small>
+                <label for="email" class="block">Username</label>
+                <input id="userName" type="email" aria-describedby="email-help" class="p-inputtext-lg" pInputText formControlName="email"/>
+                <small id="email-help" class="p-error block">Email is not available.</small>
             </div>
             <div class="field">
                 <label for="password" class="block">Username</label>
                 <input id="password" type="password" aria-describedby="password-help" class="p-inputtext-lg" pInputText formControlName="password"/>
                 <small id="password-help" class="p-error block">Username is not available.</small>
             </div>
+            <div class="field">
+                <input type="checkbox" id="remember" formControlName="remember">
+                &nbsp;Remember me.
+            </div>
             <div class="flex justify-content-end mt-4">
-                <p-button label="Login" icon="pi pi-check" iconPos="right"></p-button>
+                <p-button type="submit" label="Login" icon="pi pi-check" iconPos="right"></p-button>
             </div>
         </form>
         <a routerLink="/auth/register" class="flex justify-content-center mt-5">Forgot your password?</a>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { map, Observable, tap } from 'rxjs';
+import { User } from 'src/app/models/user.model';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  users: User[] = [];
+  total: number = 0;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.getUsers().subscribe(({total, users}) => {
+      this.users = users,
+      this.total = total
+    });
   }
 
 }
